@@ -2,4 +2,5 @@
 ## 技术选型
 - React v18
 - TS
-- Webpack
+- Webpack(react-CRA)
+- SWC代替babel

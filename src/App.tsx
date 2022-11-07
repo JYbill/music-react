@@ -1,7 +1,9 @@
 import React from "react";
+import { useRoutes } from "react-router-dom";
+import routers from "@/router/index.router";
 
 function App() {
-  return <div className="App">hello app</div>;
+  return useRoutes(routers);
 }
 
 export default App;
