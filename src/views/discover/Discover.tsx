@@ -15,12 +15,13 @@ interface IDiscoverProps {
 const Discover: FC<IDiscoverProps> = (props) => {
   return (
     <div>
-      <div>发现</div>
-      <Link to="recommend">推荐</Link>
-      <Link to="rank">排行榜</Link>
-      <Link to="radio">电台</Link>
-      <Link to="artist">歌手</Link>
-      <Link to="album">新碟上架</Link>
+      <div className="nav">
+        <Link to="recommend">推荐</Link>
+        <Link to="rank">排行榜</Link>
+        <Link to="radio">电台</Link>
+        <Link to="artist">歌手</Link>
+        <Link to="album">新碟上架</Link>
+      </div>
       <Suspense fallback="">
         <Outlet />
       </Suspense>
