@@ -4,9 +4,19 @@
  * @desc 发现页面
  * @dependence
  */
-import React from "react";
-const Discover = () => {
-  return <div>discover</div>;
+import React, { memo } from "react";
+import type { FC, ReactNode } from "react";
+
+interface IDiscoverProps {
+  children?: ReactNode;
+}
+
+const Discover: FC<IDiscoverProps> = (props) => {
+  return (
+    <div>
+      <div>发现</div>
+    </div>
+  );
 };
 
-export default Discover;
+export default memo(Discover);

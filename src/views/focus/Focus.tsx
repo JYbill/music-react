@@ -1,16 +1,16 @@
 import React, { memo } from "react";
 import type { FC, ReactNode } from "react";
 
-interface IMyProps {
+interface IFocusProps {
   children?: ReactNode;
 }
 
-const My: FC<IMyProps> = (props) => {
+const Focus: FC<IFocusProps> = (props) => {
   return (
     <div>
-      <div>我的</div>
+      <div>关注</div>
     </div>
   );
 };
 
-export default memo(My);
+export default memo(Focus);

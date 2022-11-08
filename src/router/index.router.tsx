@@ -4,34 +4,36 @@
  * @desc router入口
  * @dependence
  */
-import React from "react";
+import React, { lazy } from "react";
 import type { NonIndexRouteObject } from "react-router-dom";
-import Discover from "@/views/discover/Discover";
-import My from "@/views/my/My";
-import Download from "@/views/download/Download";
+import { Navigate } from "react-router-dom";
+
+const Discover = lazy(() => import("@/views/discover/Discover"));
+const My = lazy(() => import("@/views/my/My"));
+const Download = lazy(() => import("@/views/download/Download"));
+const Focus = lazy(() => import("@/views/focus/Focus"));
 
 const routers: NonIndexRouteObject[] = [
   {
     path: "/",
-    children: [
-      {
-        path: "/",
-        element: <Discover />,
-      },
-    ],
+    element: <Navigate to="/discover" />,
+  },
+  {
+    path: "/discover",
+    element: <Discover />,
   },
   {
     path: "/my",
     element: <My />,
   },
   {
-    path: "/friend",
-    element: <Discover />,
+    path: "/focus",
+    element: <Focus />,
   },
   {
     path: "/download",
     element: (
-      <Download name="xqv" age={23}>
+      <Download>
         <div>default</div>
       </Download>
     ),
