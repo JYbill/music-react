@@ -38,5 +38,6 @@ module.exports = {
     "@typescript-eslint/no-var-requires": "off", // 存在ESM、CommonJS共存的情况下，可以开启，如：ts + react + webpack构建
     "prettier/prettier": "warn",
     "node/no-unpublished-import": "off", // 未使用的import内容
+    "@typescript-eslint/no-explicit-any": "off",
   },
 };
