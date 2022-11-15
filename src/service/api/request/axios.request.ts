@@ -76,11 +76,12 @@ export default class AxiosRequest {
       return result;
     } catch (err: unknown) {
       // 响应失败通知 AOP
+      let errInfo;
       if (interceptor?.resFailHandler) {
         const errorRes = interceptor.resFailHandler(<IAxiosError>err);
-        err = errorRes;
+        errInfo = errorRes;
       }
-      throw err;
+      throw errInfo;
     }
   }
 

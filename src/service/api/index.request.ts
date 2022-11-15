@@ -4,15 +4,18 @@
  * @desc：区分环境文件
  * @date: 2022-10-29 12:32:17
  */
-import { BASE_UEL, TIME_OUT } from "./config/config.request";
+import config from "./config/config.request";
 import AxiosRequest from "./request/axios.request";
 
 // 判断环境
 const request = new AxiosRequest({
-  baseURL: BASE_UEL,
-  timeout: TIME_OUT,
+  baseURL: config.BASE_URL,
+  timeout: config.TIME_OUT,
 });
-// 其他域名接口
+
+/**
+ * @example: 其他域名接口
+ */
 // export const BaiduRequest = new AxiosRequest({
 //   baseURL: BASE_UEL,
 //   timeout: TIME_OUT,

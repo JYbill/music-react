@@ -4,5 +4,20 @@
  * @desc：常量配置文件
  * @date: 2022-10-29 12:32:32
  */
-export const BASE_UEL = "http://codercba.com:9002";
-export const TIME_OUT = 2000;
+interface IConfig {
+  BASE_URL: string;
+  TIME_OUT: number;
+}
+const config: IConfig = {
+  BASE_URL: "",
+  TIME_OUT: 5000,
+};
+
+const ENV = process.env;
+const NODE_ENV = ENV.NODE_ENV;
+if (NODE_ENV === "development") {
+  config.BASE_URL = ENV.REACT_APP_BASE_URL;
+} else if (NODE_ENV === "production") {
+  config.BASE_URL = ENV.REACT_APP_BASE_URL;
+}
+export default config;
