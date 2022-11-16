@@ -17,6 +17,7 @@ const Rank = lazy(() => import("@/views/discover/c-views/rank/Rank"));
 const My = lazy(() => import("@/views/my/My"));
 const Download = lazy(() => import("@/views/download/Download"));
 const Focus = lazy(() => import("@/views/focus/Focus"));
+const Demo = lazy(() => import("@/views/Demo/Demo"));
 
 const routers: NonIndexRouteObject[] = [
   {
@@ -64,6 +65,10 @@ const routers: NonIndexRouteObject[] = [
   {
     path: "/download",
     element: <Download />,
+  },
+  {
+    path: "/demo",
+    element: <Demo />,
   },
 ];
 export default routers;
