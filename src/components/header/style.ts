@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import spiritTopBar from "@/assets/img/spirit-topbar.png";
 
+const headerLineHeight = `line-height: 70px`;
+const headerTop = `top: 30%;`;
 export const HeadWrapper = styled.div`
   .header {
     width: 100%;
@@ -9,12 +11,12 @@ export const HeadWrapper = styled.div`
     .content {
       width: 1100px;
       height: 70px;
-      line-height: 70px;
+      ${headerLineHeight};
       margin: 0 auto;
       display: flex;
 
       // 超链接
-      a {
+      a.item {
         width: auto;
         max-width: 97px;
         text-align: center;
@@ -38,6 +40,7 @@ export const HeadWrapper = styled.div`
         // 下载客户端
         :nth-last-of-type(1) {
           position: relative;
+
           :after {
             content: "";
             width: 30px;
@@ -58,30 +61,61 @@ export const HeadWrapper = styled.div`
       }
 
       // 搜索输入框
-      .search {
-        font-size: 12px;
-        position: relative;
-        top: 30%;
-        padding: 0 0 0 30px;
-        height: 32px;
-        width: 130px;
-        border-radius: 30px;
-        border: none;
-        outline: none;
-        margin-left: 100px;
-        ::placeholder {
-          font-size: 10px;
-          color: ${(props) => props.theme.garyColor};
+      .search-continer {
+        .search {
+          font-size: 12px;
+          position: relative;
+          padding: 0 0 0 30px;
+          height: 32px;
+          width: 130px;
+          border-radius: 30px;
+          border: none;
+          outline: none;
+          margin-left: 60px;
+
+          ::placeholder {
+            font-size: 10px;
+            color: ${(props) => props.theme.garyColor};
+          }
+        }
+
+        .search-icon {
+          display: block;
+          position: relative;
+          left: 60px;
+          top: -55px;
+          width: 30px;
+          height: 30px;
+          background-image: url(${spiritTopBar});
+          background-position: 0, 100px;
         }
       }
-      .search-icon {
+
+      // 创作中心按钮
+      .creat-center.ant-btn {
         position: relative;
-        left: -160px;
-        top: 23%;
-        width: 30px;
-        height: 30px;
-        background-image: url(${spiritTopBar});
-        background-position: 0, 100px;
+        color: #ccc;
+        border-radius: 20px;
+        background-color: #212121;
+        ${headerTop};
+        margin-left: 10px;
+        border: 1px solid #464646;
+
+        :hover {
+          color: #ccc;
+          border-color: #ccc;
+        }
+      }
+
+      // 登陆
+      .login {
+        margin-top: 3px;
+        font-size: 12px;
+        margin-left: 20px;
+        color: ${(props) => props.theme.garyColor};
+        :hover {
+          text-decoration: underline;
+        }
       }
     }
   }

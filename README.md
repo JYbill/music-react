@@ -2,5 +2,11 @@
 ## 技术选型
 - React v18
 - TS
-- Webpack(react-CRA)
-- SWC代替babel
+- 构建工具
+  - Webpack(react-CRA)
+  - SWC代替babel
+- 样式：
+  - Scss
+  - styled-component
+- UI
+  - ant design for react
