@@ -6,7 +6,8 @@
  */
 import React, { memo, Suspense } from "react";
 import type { FC, ReactNode } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import DiscoverHeader from "./components/DiscoverHeader";
 
 interface IDiscoverProps {
   children?: ReactNode;
@@ -15,13 +16,10 @@ interface IDiscoverProps {
 const Discover: FC<IDiscoverProps> = (props) => {
   return (
     <div>
-      <div className="nav">
-        <Link to="recommend">推荐</Link>
-        <Link to="rank">排行榜</Link>
-        <Link to="radio">电台</Link>
-        <Link to="artist">歌手</Link>
-        <Link to="album">新碟上架</Link>
-      </div>
+      {/* 发现页面header */}
+      <DiscoverHeader />
+
+      {/* header路由显示的内容 */}
       <Suspense fallback="">
         <Outlet />
       </Suspense>

@@ -11,6 +11,7 @@ import Album from "@/views/discover/c-views/album/Album";
 
 const Discover = lazy(() => import("@/views/discover/Discover"));
 const Recommend = lazy(() => import("@/views/discover/c-views/recommend/Recommend"));
+const Playlist = lazy(() => import("@/views/discover/c-views/playlist/Playlist"));
 const Artist = lazy(() => import("@/views/discover/c-views/artist/Artist"));
 const Radio = lazy(() => import("@/views/discover/c-views/radio/Radio"));
 const Rank = lazy(() => import("@/views/discover/c-views/rank/Rank"));
@@ -37,16 +38,20 @@ const routers: NonIndexRouteObject[] = [
         element: <Recommend />,
       },
       {
-        path: "/discover/artist",
-        element: <Artist />,
+        path: "/discover/rank",
+        element: <Rank />,
+      },
+      {
+        path: "/discover/playlist",
+        element: <Playlist />,
       },
       {
         path: "/discover/radio",
         element: <Radio />,
       },
       {
-        path: "/discover/rank",
-        element: <Rank />,
+        path: "/discover/artist",
+        element: <Artist />,
       },
       {
         path: "/discover/album",

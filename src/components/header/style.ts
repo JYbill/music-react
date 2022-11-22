@@ -17,7 +17,7 @@ export const HeadWrapper = styled.div`
       display: flex;
 
       // 超链接
-      a.item {
+      .item {
         width: auto;
         max-width: 97px;
         text-align: center;
@@ -38,23 +38,6 @@ export const HeadWrapper = styled.div`
           }
         }
 
-        // 下载客户端
-        :nth-last-of-type(1) {
-          position: relative;
-
-          :after {
-            content: "";
-            width: 30px;
-            height: 20px;
-            background-image: url(${spiritTopBar});
-            background-position: -190px 0;
-            display: block;
-            position: absolute;
-            right: -21px;
-            top: 30%;
-          }
-        }
-
         :hover {
           background-color: #000;
           color: #fff;
@@ -63,6 +46,13 @@ export const HeadWrapper = styled.div`
         &.active {
           background-color: #000;
           position: relative;
+        }
+
+        // 下载客户端的hot精灵图
+        .hot {
+          position: relative;
+          left: 20px;
+          top: -10px;
         }
       }
 
@@ -81,7 +71,7 @@ export const HeadWrapper = styled.div`
 
           ::placeholder {
             font-size: 10px;
-            color: ${(props) => props.theme.garyColor};
+            color: ${(props) => props.theme.color.garyColor};
           }
         }
 
@@ -118,7 +108,7 @@ export const HeadWrapper = styled.div`
         margin-top: 3px;
         font-size: 12px;
         margin-left: 20px;
-        color: ${(props) => props.theme.garyColor};
+        color: ${(props) => props.theme.color.garyColor};
         :hover {
           text-decoration: underline;
         }

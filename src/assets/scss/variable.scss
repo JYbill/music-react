@@ -1,8 +1,17 @@
 // hot精灵图
 .spirit-hot {
-  background-image: url("~@/assets/img/spirit-topbar.png");
-  background-position: -190px 0;
-  background-repeat: no-repeat;
+  position: relative;
+  &::after {
+    content: "";
+    width: 30px;
+    height: 20px;
+    background-image: url("~@/assets/img/spirit-topbar.png");
+    background-position: -190px 0;
+    display: block;
+    position: absolute;
+    right: -21px;
+    top: 30%;
+  }
 }
 
 // 选中红色箭头精灵图

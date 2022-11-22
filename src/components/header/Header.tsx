@@ -8,7 +8,7 @@ import type { FC, ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import { HeadWrapper } from "./style";
 import { ThemeProvider } from "styled-components";
-import them from "@/assets/mixin/them";
+import Theme from "@/assets/mixin/theme";
 import { Button } from "antd";
 import headerData from "@/config/header-data.config";
 
@@ -26,12 +26,17 @@ const Header: FC<IHeaderProps> = (props) => {
       return item.type === "router" ? (
         <NavLink
           className={({ isActive }) => {
-            return isActive ? className + " active spirit-active-arrow" : className;
+            let addClassName = className;
+            addClassName += isActive ? " active spirit-active-arrow" : "";
+            return addClassName;
           }}
           key={index}
           to={item.url}
         >
           {item.name}
+
+          {/* hot精灵图 */}
+          {index === headerData.length - 1 ? <span className="hot spirit-hot"></span> : null}
         </NavLink>
       ) : (
         <a className={className} key={index} href={item.url} rel="noreferrer" target="_blank">
@@ -49,7 +54,7 @@ const Header: FC<IHeaderProps> = (props) => {
   };
 
   return (
-    <ThemeProvider theme={them}>
+    <ThemeProvider theme={Theme}>
       <HeadWrapper>
         <div className="header">
           <div className="content">

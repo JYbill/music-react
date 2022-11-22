@@ -1,4 +1,4 @@
-interface IHeaderList {
+export interface IHeaderList {
   type: "router" | "link";
   url: string;
   name: string;

@@ -1,11 +1,6 @@
-import React, { Suspense, useEffect } from "react";
-import { Link, useRoutes } from "react-router-dom";
+import React, { Suspense } from "react";
+import { useRoutes } from "react-router-dom";
 import routers from "@/router/index.router";
-import { useAppSelector, useAppDispatch } from "@/store/index.store";
-import { decrementAction, incrementAction } from "@/store/counter.store";
-import { shallowEqual } from "react-redux";
-import request from "@/service/api/index.request";
-import ClassComp from "@/views/Demo/ClassComp";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
