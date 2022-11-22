@@ -24,7 +24,13 @@ const Header: FC<IHeaderProps> = (props) => {
     return headerData.map((item, index) => {
       const className = "item";
       return item.type === "router" ? (
-        <NavLink className={className} key={index} to={item.url}>
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? className + " active spirit-active-arrow" : className;
+          }}
+          key={index}
+          to={item.url}
+        >
           {item.name}
         </NavLink>
       ) : (
@@ -60,7 +66,7 @@ const Header: FC<IHeaderProps> = (props) => {
             <Button className="creat-center" onClick={() => openCreatCenter()}>
               创作中心
             </Button>
-            <a className="login" href="javascript:">
+            <a className="login" href="" onClick={(e) => e.preventDefault()}>
               登陆
             </a>
           </div>

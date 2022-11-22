@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import spiritTopBar from "@/assets/img/spirit-topbar.png";
 
-const headerLineHeight = `line-height: 70px`;
+const headerLineHeight = `line-height: 70px`; // header-line高度
 const headerTop = `top: 30%;`;
 export const HeadWrapper = styled.div`
   .header {
     width: 100%;
     background: #242424;
+    border-bottom: 5px solid #b2281e;
 
     .content {
       width: 1100px;
@@ -57,6 +58,11 @@ export const HeadWrapper = styled.div`
         :hover {
           background-color: #000;
           color: #fff;
+        }
+
+        &.active {
+          background-color: #000;
+          position: relative;
         }
       }
 

@@ -1,5 +1,4 @@
 export default {
-  color: "red",
-  backgroundColor: "orange",
-  garyColor: "#9B9B9B",
+  garyColor: "#9B9B9B", // 默认灰
+  themeRed: "#B2281E", // 主题红
 };

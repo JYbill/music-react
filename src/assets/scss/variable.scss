@@ -2,4 +2,19 @@
 .spirit-hot {
   background-image: url("~@/assets/img/spirit-topbar.png");
   background-position: -190px 0;
+  background-repeat: no-repeat;
+}
+
+// 选中红色箭头精灵图
+.spirit-active-arrow::after {
+  background-image: url("~@/assets/img/spirit-topbar.png");
+  background-position: -226px 0;
+  background-repeat: no-repeat;
+  content: "";
+  width: 10px;
+  height: 5px;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
 }
