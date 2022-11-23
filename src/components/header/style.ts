@@ -7,7 +7,7 @@ export const HeadWrapper = styled.div`
   .header {
     width: 100%;
     background: #242424;
-    border-bottom: 5px solid #b2281e;
+    border-bottom: 5px solid ${(props) => props.theme.color.themeRed};
 
     .content {
       width: 1100px;
@@ -67,7 +67,7 @@ export const HeadWrapper = styled.div`
           border-radius: 30px;
           border: none;
           outline: none;
-          margin-left: 60px;
+          margin-left: 75px;
 
           ::placeholder {
             font-size: 10px;
@@ -78,7 +78,7 @@ export const HeadWrapper = styled.div`
         .search-icon {
           display: block;
           position: relative;
-          left: 60px;
+          left: 75px;
           top: -55px;
           width: 30px;
           height: 30px;
@@ -96,6 +96,9 @@ export const HeadWrapper = styled.div`
         ${headerTop};
         margin-left: 10px;
         border: 1px solid #464646;
+        span {
+          font-size: 12px;
+        }
 
         :hover {
           color: #ccc;

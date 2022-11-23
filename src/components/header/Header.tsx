@@ -69,7 +69,7 @@ const Header: FC<IHeaderProps> = (props) => {
 
             {/* header右侧 */}
             <Button className="creat-center" onClick={() => openCreatCenter()}>
-              创作中心
+              创作者中心
             </Button>
             <a className="login" href="" onClick={(e) => e.preventDefault()}>
               登陆
