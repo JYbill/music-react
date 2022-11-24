@@ -5,14 +5,14 @@
  * @dependence
  */
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./counter.store";
+import recommendReducer from "./recommend.store";
 import { useSelector, useDispatch } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
 // 创建store
 const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    recommendReducer: recommendReducer,
   },
 });
 
