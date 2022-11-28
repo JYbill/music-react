@@ -4,9 +4,10 @@
  * @desc redux入口文件
  * @dependence
  */
-import { configureStore } from "@reduxjs/toolkit";
 import recommendReducer from "./recommend.store";
-import { useSelector, useDispatch } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+
+import { useDispatch, useSelector } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 
 // 创建store

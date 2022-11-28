@@ -5,6 +5,8 @@
  */
 import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
+
+import Swiper from "@/components/swiper/Swiper";
 import { useAppDispatch } from "@/store/index.store";
 import { getBannerReq } from "@/store/recommend.store";
 
@@ -16,11 +18,16 @@ const Recommend: FC<IRecommendProps> = (props) => {
   // hooks
   const dispatch = useAppDispatch();
   useEffect(() => {
+    // 轮播图网络请求
     dispatch(getBannerReq());
   }, []);
 
   // render
-  return <div>推荐</div>;
+  return (
+    <div>
+      <Swiper />
+    </div>
+  );
 };
 
 export default memo(Recommend);

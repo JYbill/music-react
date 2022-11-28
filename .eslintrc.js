@@ -36,7 +36,7 @@ module.exports = {
     "no-unused-vars": "off", // JS下未使用的变量
     "@typescript-eslint/no-unused-vars": "off", // TS未使用的变量
     "@typescript-eslint/no-var-requires": "off", // 存在ESM、CommonJS共存的情况下，可以开启，如：ts + react + webpack构建
-    "prettier/prettier": "warn",
+    "prettier/prettier": "off",
     "node/no-unpublished-import": "off", // 未使用的import内容
     "@typescript-eslint/no-explicit-any": "off",
   },

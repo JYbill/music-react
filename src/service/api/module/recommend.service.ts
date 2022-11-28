@@ -6,14 +6,19 @@
  */
 import Request from "../index.request";
 
-interface IList {
-  offset: number;
-  size: number;
+interface IBannerResp extends IResponse {
+  banners: IBanner[];
+}
+
+export interface IBanner {
+  targetId: number;
+  imageUrl: string;
+  typeTitle: string;
 }
 
 /**
  * GET 获取banner数据
  */
 export async function getBanner() {
-  return await Request.get("/banner");
+  return await Request.get<IBannerResp>("/banner");
 }

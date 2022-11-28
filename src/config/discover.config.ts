@@ -19,7 +19,7 @@ export const discoverHeaderConfig: IHeaderList[] = [
   {
     type: "router",
     url: "radio",
-    name: "电台主播",
+    name: "主播电台",
   },
   {
     type: "router",

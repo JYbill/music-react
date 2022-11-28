@@ -27,3 +27,37 @@
   bottom: 0;
   transform: translateX(-50%);
 }
+
+// 阴影背景
+@mixin spirit-shadow-bg {
+  background-image: url("~@/assets/img/swper-operation.png");
+}
+.spirit-shadow-bg-left {
+  @include spirit-shadow-bg;
+}
+.spirit-shadow-bg-right {
+  @include spirit-shadow-bg;
+  background-position-x: -17px;
+}
+
+// 轮播图左右翻页精灵图
+@mixin spirit-swiper {
+  background-image: url("~@/assets/img/swper-operation.png");
+  cursor: pointer;
+}
+.spirit-swiper-left {
+  @include spirit-swiper;
+  background-position-y: -360px;
+}
+.spirit-swiper-left-dark:hover {
+  @include spirit-swiper;
+  background-position-y: 228px;
+}
+.spirit-swiper-right {
+  @include spirit-swiper;
+  background-position-y: -508px;
+}
+.spirit-swiper-right-dark:hover {
+  @include spirit-swiper;
+  background-position-y: 80px;
+}

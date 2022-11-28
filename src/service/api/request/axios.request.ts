@@ -5,8 +5,8 @@
  * @date: 2022-10-29 12:04:11
  */
 import axios from "axios";
-import type { IAxiosError, AxiosConfig } from "./type.request";
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import type { IAxiosError, AxiosConfig } from "./type.request";
 
 export default class AxiosRequest {
   private instance: AxiosInstance;
@@ -18,7 +18,7 @@ export default class AxiosRequest {
     const interceptors = this.instance.interceptors;
     // request interceptor
     interceptors.request.use(
-      (config: AxiosRequestConfig<any>) => {
+      (config: AxiosRequestConfig) => {
         // config AOP
         return config;
       },
@@ -29,7 +29,7 @@ export default class AxiosRequest {
 
     // response interceptor
     interceptors.response.use(
-      (value: AxiosResponse<any, any>) => {
+      (value: AxiosResponse) => {
         // response success
         return value.data;
       },
@@ -55,7 +55,6 @@ export default class AxiosRequest {
    * @param config 请求配置
    * @returns
    */
-
   async request<T = any, C = any>(config: AxiosConfig<T, C>) {
     const interceptor = config.interceptor;
 
@@ -85,11 +84,11 @@ export default class AxiosRequest {
     }
   }
 
-  get<T = any>(url: string, config?: AxiosConfig<T>) {
+  async get<T = any>(url: string, config?: AxiosConfig<T>) {
     return this.instance.get<any, T>(url, config);
   }
 
-  post<T = any>(url: string, data?: any, config?: AxiosConfig<T>) {
+  async post<T = any>(url: string, data?: any, config?: AxiosConfig<T>) {
     return this.instance.post<any, T>(url, data, config);
   }
 

@@ -26,6 +26,9 @@ const webpack = require("webpack");
 const needAnalysis = true;
 
 module.exports = {
+  devServer: {
+    port: 3000,
+  },
   webpack: {
     alias: {
       "@": resolve("src"),
