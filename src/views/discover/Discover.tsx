@@ -4,10 +4,11 @@
  * @desc 发现页面
  * @dependence
  */
-import React, { memo, Suspense } from "react";
+import DiscoverHeader from "./components/DiscoverHeader";
+
+import React, { Suspense, memo } from "react";
 import type { FC, ReactNode } from "react";
 import { Outlet } from "react-router-dom";
-import DiscoverHeader from "./components/DiscoverHeader";
 
 interface IDiscoverProps {
   children?: ReactNode;

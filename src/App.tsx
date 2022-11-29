@@ -1,8 +1,9 @@
 import React, { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
-import routers from "@/router/index.router";
-import Header from "@/components/header/Header";
+
 import Footer from "@/components/footer/Footer";
+import Header from "@/components/header/Header";
+import routers from "@/router/index.router";
 
 function App() {
   // 获取store且进行浅比较优化

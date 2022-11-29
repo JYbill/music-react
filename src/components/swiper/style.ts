@@ -32,6 +32,35 @@ export const SwiperContent = styled.div`
         height: ${carouselHeight};
       }
     }
+
+    .dot {
+      bottom: -3px;
+      li {
+        border-radius: 50px;
+        width: 7px !important;
+        height: 7px !important;
+        margin: 0 8px;
+        //background-color: rgba(255, 255, 255);
+
+        &:hover {
+          button {
+            opacity: 1;
+            background-color: ${(props) => props.theme.color.themeRed};
+          }
+        }
+
+        button {
+          height: 100%;
+          border-radius: 50px;
+        }
+
+        &.slick-active {
+          button {
+            background-color: ${(props) => props.theme.color.themeRed};
+          }
+        }
+      }
+    }
   }
 
   // 轮播图控制

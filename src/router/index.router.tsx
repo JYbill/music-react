@@ -7,6 +7,7 @@
 import React, { lazy } from "react";
 import type { NonIndexRouteObject } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+
 import Album from "@/views/discover/c-views/album/Album";
 
 const Discover = lazy(() => import("@/views/discover/Discover"));

@@ -3,12 +3,14 @@
  * @auth xiaoqinvar
  * @desc
  */
+import { NavHeadWrapper } from "./style";
+
 import React, { memo } from "react";
 import type { FC, ReactNode } from "react";
-import { NavHeadWrapper } from "./style";
 import { NavLink } from "react-router-dom";
-import { discoverHeaderConfig } from "@/config/discover.config";
+
 import Theme from "@/assets/mixin/theme";
+import { discoverHeaderConfig } from "@/config/discover.config";
 
 interface INavHeaderProps {
   children?: ReactNode;
