@@ -56,5 +56,4 @@ export const { setBannerAction } = recommendReducer.actions;
 export const getBannerReq = createAsyncThunk("banner", async (arg, { dispatch }) => {
   const res = await getBanner();
   dispatch(setBannerAction(res.banners));
-  console.log(res.banners);
 });

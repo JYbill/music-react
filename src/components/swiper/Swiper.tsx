@@ -35,9 +35,15 @@ const Swiper: FC<ISwiperProps> = (props) => {
   // render
   return (
     <ThemeProvider theme={Theme}>
-      <SwiperWrapper style={{ backgroundImage: `url(${bg})` }}>
+      <SwiperWrapper
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "9000px",
+          backgroundPosition: "center",
+        }}
+      >
         {/* 轮播图 */}
-        <SwiperContent>
+        <SwiperContent className="wrap-v2">
           <Carousel
             effect="fade"
             dots={{ className: "dot" }}

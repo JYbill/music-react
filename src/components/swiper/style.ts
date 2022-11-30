@@ -16,7 +16,6 @@ export const SwiperWrapper = styled.div`
 const carouselWidth = `730px`;
 const carouselHeight = `285px`;
 export const SwiperContent = styled.div`
-  width: 982px;
   height: ${carouselHeight};
   margin: 0 auto;
   display: flex;

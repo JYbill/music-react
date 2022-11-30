@@ -15,9 +15,5 @@ const config: IConfig = {
 
 const ENV = process.env;
 const NODE_ENV = ENV.NODE_ENV;
-if (NODE_ENV === "development") {
-  config.BASE_URL = ENV.REACT_APP_BASE_URL;
-} else if (NODE_ENV === "production") {
-  config.BASE_URL = ENV.REACT_APP_BASE_URL;
-}
+config.BASE_URL = ENV.REACT_APP_BASE_URL;
 export default config;

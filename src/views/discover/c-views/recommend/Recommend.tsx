@@ -3,12 +3,16 @@
  * @auth xiaoqinvar
  * @desc 推荐子页面
  */
+import RecommendModule from "./components/recmd-m/RecommendModule";
+import { ContentWrapper } from "./style";
+
 import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 
 import Swiper from "@/components/swiper/Swiper";
 import { useAppDispatch } from "@/store/index.store";
 import { getBannerReq } from "@/store/recommend.store";
+import ModuleAside from "@/views/discover/c-views/recommend/components/m-aside/ModuleAside";
 
 interface IRecommendProps {
   children?: ReactNode;
@@ -26,6 +30,10 @@ const Recommend: FC<IRecommendProps> = (props) => {
   return (
     <div>
       <Swiper />
+      <ContentWrapper className="wrap-v2">
+        <RecommendModule />
+        <ModuleAside />
+      </ContentWrapper>
     </div>
   );
 };

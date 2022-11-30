@@ -25,9 +25,19 @@ const webpack = require("webpack");
 // 开启自定义插件
 const needAnalysis = true;
 
+// 预设环境
+const PROXY_URL = "http://codercba.com:9002";
+const PROXY_PREFIX = "/api";
+
 module.exports = {
   devServer: {
     port: 3000,
+    proxy: {
+      [PROXY_PREFIX]: {
+        target: PROXY_URL,
+        pathRewrite: { "^/api": "" },
+      },
+    },
   },
   webpack: {
     alias: {
