@@ -10,7 +10,7 @@ interface IConfig {
 }
 const config: IConfig = {
   BASE_URL: "",
-  TIME_OUT: 5000,
+  TIME_OUT: 8000,
 };
 
 const ENV = process.env;

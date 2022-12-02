@@ -69,3 +69,29 @@
   @include spirit-swiper;
   background-position-y: 80px;
 }
+
+// 红空心⭕️精灵图
+.spirit-cycle {
+  background-image: url("~@/assets/img/sprite-opera2.png");
+  width: 15px;
+  height: 15px;
+  background-position: -235px -163px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+// 红色箭头➡️精灵图
+.spirit-arrow-r::after {
+  content: "";
+  background-image: url("~@/assets/img/sprite-opera2.png");
+  width: 15px;
+  height: 15px;
+  background-position: 0 -240px;
+  position: absolute;
+  right: -20px;
+}
+
+// 白->灰渐变背景图
+.bg-gary-v1 {
+  background-image: url("~@/assets/img/sprite-opera2.png");
+}

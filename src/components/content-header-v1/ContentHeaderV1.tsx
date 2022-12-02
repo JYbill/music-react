@@ -5,15 +5,41 @@
  */
 import { Wrapper } from "./style";
 
-import React, { memo } from "react";
+import React, { Fragment, memo } from "react";
 import type { FC, ReactNode } from "react";
+
+import Theme from "@/assets/mixin/theme";
+
+interface ITag {
+  name: string;
+  url: string;
+}
 
 interface IContentHeaderV1Props {
   children?: ReactNode;
+  tagList?: ITag[];
 }
 
 const ContentHeaderV1: FC<IContentHeaderV1Props> = (props) => {
-  return <Wrapper>header-v1</Wrapper>;
+  return (
+    <Wrapper theme={Theme}>
+      <span className="spirit-cycle"></span>
+      <h2 className="title">热门推荐</h2>
+      <div className="tag-continer">{renderTagList()}</div>
+      <span className="more spirit-arrow-r">更多</span>
+    </Wrapper>
+  );
+
+  function renderTagList() {
+    return props.tagList?.map((item) => {
+      return (
+        <Fragment key={item.name}>
+          <a href={item.url}>{item.name}</a>
+          <span>|</span>
+        </Fragment>
+      );
+    });
+  }
 };
 
 export default memo(ContentHeaderV1);
