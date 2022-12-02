@@ -12,13 +12,15 @@ export const Wrapper = styled.div`
 
   p {
     color: ${(props) => props.theme.color.gary6};
-    padding: 0 0 16px 0;
+    padding-bottom: 12px;
     width: 205px;
     font-size: inherit;
     line-height: 22px;
   }
 
   .ant-btn {
-    background-color: ${(props) => props.theme.color.themeRed};
+    width: 100px;
+    color: #fff !important;
+    border: none;
   }
 `;

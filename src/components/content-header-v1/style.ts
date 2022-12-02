@@ -20,6 +20,9 @@ export const Wrapper = styled.div`
     a {
       color: ${(props) => props.theme.color.gary6};
       font-size: inherit;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     span {
       font-size: inherit;
@@ -35,5 +38,9 @@ export const Wrapper = styled.div`
     position: absolute;
     right: 33px;
     bottom: 9px;
+    color: ${(props) => props.theme.color.gary6};
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;

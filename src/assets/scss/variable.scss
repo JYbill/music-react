@@ -95,3 +95,13 @@
 .bg-gary-v1 {
   background-image: url("~@/assets/img/sprite-opera2.png");
 }
+
+// 红色按钮背景
+.bg-btn-red {
+  background-image: url("~@/assets/img/sprite-opera2.png");
+  background-position-y: -194px;
+  transition: none;
+  &:hover {
+    background-position-x: -110px;
+  }
+}

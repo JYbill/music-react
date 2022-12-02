@@ -7,6 +7,7 @@ import { Wrapper } from "./style";
 
 import React, { Fragment, memo } from "react";
 import type { FC, ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 import Theme from "@/assets/mixin/theme";
 
@@ -26,7 +27,9 @@ const ContentHeaderV1: FC<IContentHeaderV1Props> = (props) => {
       <span className="spirit-cycle"></span>
       <h2 className="title">热门推荐</h2>
       <div className="tag-continer">{renderTagList()}</div>
-      <span className="more spirit-arrow-r">更多</span>
+      <Link to="/discover/playlist/" className="more spirit-arrow-r">
+        更多
+      </Link>
     </Wrapper>
   );
 
