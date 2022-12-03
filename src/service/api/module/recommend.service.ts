@@ -22,3 +22,23 @@ export interface IBanner {
 export async function getBanner() {
   return await Request.get<IBannerResp>("/banner");
 }
+
+interface ISongListRes extends IResponse {
+  result: IRecommendSong[];
+}
+export interface IRecommendSong {
+  id: number;
+  name: string;
+  picUrl: string;
+  playCount: number;
+}
+/**
+ * 推荐歌单
+ */
+export async function getSongList(limit = 8) {
+  return await Request.get<ISongListRes>("/personalized", {
+    params: {
+      limit,
+    },
+  });
+}

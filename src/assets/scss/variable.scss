@@ -72,7 +72,7 @@
 
 // 红空心⭕️精灵图
 .spirit-cycle {
-  background-image: url("~@/assets/img/sprite-opera2.png");
+  background-image: url("~@/assets/img/sprit-opera2.png");
   width: 15px;
   height: 15px;
   background-position: -235px -163px;
@@ -83,7 +83,7 @@
 // 红色箭头➡️精灵图
 .spirit-arrow-r::after {
   content: "";
-  background-image: url("~@/assets/img/sprite-opera2.png");
+  background-image: url("~@/assets/img/sprit-opera2.png");
   width: 15px;
   height: 15px;
   background-position: 0 -240px;
@@ -93,15 +93,50 @@
 
 // 白->灰渐变背景图
 .bg-gary-v1 {
-  background-image: url("~@/assets/img/sprite-opera2.png");
+  background-image: url("~@/assets/img/sprit-opera2.png");
 }
 
 // 红色按钮背景
 .bg-btn-red {
-  background-image: url("~@/assets/img/sprite-opera2.png");
+  background-image: url("~@/assets/img/sprit-opera2.png");
   background-position-y: -194px;
   transition: none;
   &:hover {
     background-position-x: -110px;
   }
+}
+
+// 歌单背景
+@mixin bg-song {
+  background-image: url("~@/assets/img/song-bg.png");
+}
+.bg-song-item {
+  @include bg-song;
+  width: 140px;
+  height: 140px;
+}
+.bg-song-bottom {
+  @include bg-song;
+  background-position-y: -536px;
+}
+
+// 耳机icon
+.spirit-headset {
+  &:before {
+    content: "";
+    width: 14px;
+    height: 11px;
+    background-image: url("~@/assets/img/spirit-opera3.png");
+    background-position-y: -23px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+// 播放icon
+.spirit-play {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-image: url("~@/assets/img/spirit-opera3.png");
 }

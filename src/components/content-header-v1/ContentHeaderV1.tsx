@@ -19,13 +19,14 @@ interface ITag {
 interface IContentHeaderV1Props {
   children?: ReactNode;
   tagList?: ITag[];
+  title: string;
 }
 
 const ContentHeaderV1: FC<IContentHeaderV1Props> = (props) => {
   return (
     <Wrapper theme={Theme}>
       <span className="spirit-cycle"></span>
-      <h2 className="title">热门推荐</h2>
+      <h2 className="title">{props.title}</h2>
       <div className="tag-continer">{renderTagList()}</div>
       <Link to="/discover/playlist/" className="more spirit-arrow-r">
         更多
