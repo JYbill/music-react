@@ -16,13 +16,14 @@ module.exports = {
   },
 
   // 插件
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["@typescript-eslint", "react", "sonarjs"],
 
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "plugin:sonarjs/recommended",
   ],
 
   settings: {

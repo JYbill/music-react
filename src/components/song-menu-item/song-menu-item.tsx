@@ -4,7 +4,6 @@
  * @desc
  */
 import { Wrapper } from "./style";
-import { ThemeProvider } from "styled-components";
 
 import React, { memo } from "react";
 import type { FC, ReactNode } from "react";

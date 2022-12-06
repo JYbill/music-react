@@ -27,7 +27,7 @@ const ContentHeaderV1: FC<IContentHeaderV1Props> = (props) => {
     <Wrapper theme={Theme}>
       <span className="spirit-cycle"></span>
       <h2 className="title">{props.title}</h2>
-      <div className="tag-continer">{renderTagList()}</div>
+      <div className="tag-container">{renderTagList()}</div>
       <Link to="/discover/playlist/" className="more spirit-arrow-r">
         更多
       </Link>

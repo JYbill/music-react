@@ -6,7 +6,7 @@
 import React, { memo } from "react";
 import type { FC, ReactNode } from "react";
 
-import NavHeader from "@/components/nav-header/NavHeader";
+import NavHeader from "@/components/nav-header/nav-header";
 
 interface IDiscoverHeaderProps {
   children?: ReactNode;

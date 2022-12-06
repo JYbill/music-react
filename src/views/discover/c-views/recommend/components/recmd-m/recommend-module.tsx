@@ -3,7 +3,7 @@
  * @auth xiaoqinvar
  * @desc
  */
-import { hotTagList } from "./RecommendModule.enum";
+import { hotTagList } from "./recommend-module.enum";
 import { ModuleWrapper } from "./style";
 
 import React, { memo } from "react";
@@ -11,10 +11,10 @@ import type { FC, ReactNode } from "react";
 import { shallowEqual } from "react-redux";
 
 import Theme from "@/assets/mixin/theme";
-import ContentHeaderV1 from "@/components/content-header-v1/ContentHeaderV1";
-import SongMenuItem from "@/components/song-menu-item/SongMenuItem";
+import ContentHeaderV1 from "@/components/content-header-v1/content-header-v1";
+import SongMenuItem from "@/components/song-menu-item/song-menu-item";
 import { useAppSelector } from "@/store/index.store";
-import NewDisc from "@/views/discover/c-views/recommend/components/new-disc/NewDisc";
+import NewDisc from "@/views/discover/c-views/recommend/components/new-disc/new-disc";
 
 interface IRecommendModuleProps {
   children?: ReactNode;

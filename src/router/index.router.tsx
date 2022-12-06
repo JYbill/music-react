@@ -8,18 +8,18 @@ import React, { lazy } from "react";
 import type { NonIndexRouteObject } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 
-import Album from "@/views/discover/c-views/album/Album";
+import Album from "@/views/discover/c-views/album/album";
 
-const Discover = lazy(() => import("@/views/discover/Discover"));
-const Recommend = lazy(() => import("@/views/discover/c-views/recommend/Recommend"));
-const Playlist = lazy(() => import("@/views/discover/c-views/playlist/Playlist"));
-const Artist = lazy(() => import("@/views/discover/c-views/artist/Artist"));
-const Radio = lazy(() => import("@/views/discover/c-views/radio/Radio"));
-const Rank = lazy(() => import("@/views/discover/c-views/rank/Rank"));
-const My = lazy(() => import("@/views/my/My"));
-const Download = lazy(() => import("@/views/download/Download"));
-const Focus = lazy(() => import("@/views/focus/Focus"));
-const Demo = lazy(() => import("@/views/Demo/Demo"));
+const Discover = lazy(() => import("@/views/discover/discover"));
+const Recommend = lazy(() => import("@/views/discover/c-views/recommend/recommend"));
+const Playlist = lazy(() => import("@/views/discover/c-views/playlist/playlist"));
+const Artist = lazy(() => import("@/views/discover/c-views/artist/artist"));
+const Radio = lazy(() => import("@/views/discover/c-views/radio/radio"));
+const Rank = lazy(() => import("@/views/discover/c-views/rank/rank"));
+const My = lazy(() => import("@/views/my/my"));
+const Download = lazy(() => import("@/views/download/download"));
+const Focus = lazy(() => import("@/views/focus/focus"));
+const Demo = lazy(() => import("@/views/Demo/demo"));
 
 const routers: NonIndexRouteObject[] = [
   {

@@ -1,8 +1,8 @@
 import React, { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
 import routers from "@/router/index.router";
 
 function App() {

@@ -3,16 +3,16 @@
  * @auth xiaoqinvar
  * @desc 推荐子页面
  */
-import RecommendModule from "./components/recmd-m/RecommendModule";
+import RecommendModule from "./components/recmd-m/recommend-module";
 import { ContentWrapper } from "./style";
 
 import React, { memo, useEffect } from "react";
 import type { FC, ReactNode } from "react";
 
-import Swiper from "@/components/swiper/Swiper";
+import Swiper from "@/components/swiper/swiper";
 import { useAppDispatch } from "@/store/index.store";
 import { getBannerReq, getSongListReq } from "@/store/recommend.store";
-import ModuleAside from "@/views/discover/c-views/recommend/components/m-aside/ModuleAside";
+import ModuleAside from "@/views/discover/c-views/recommend/components/m-aside/module-aside";
 
 interface IRecommendProps {
   children?: ReactNode;

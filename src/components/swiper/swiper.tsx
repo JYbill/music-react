@@ -100,7 +100,7 @@ const Swiper: FC<ISwiperProps> = (props) => {
   function changeSwiperAfter(current: number) {
     setTimeout(() => {
       setSpeed(DEFAULT_SPEED);
-    }, 300);
+    }, 400);
   }
 
   /**

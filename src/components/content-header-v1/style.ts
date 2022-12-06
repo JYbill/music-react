@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     line-height: 28px;
   }
 
-  .tag-continer {
+  .tag-container {
     font-size: 12px;
     color: ${(props) => props.theme.color.gary6};
     a {

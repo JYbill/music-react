@@ -8,7 +8,7 @@ import { AsideWrapper } from "./style";
 import React, { memo } from "react";
 import type { FC, ReactNode } from "react";
 
-import LoginCard from "@/views/discover/c-views/recommend/components/login-card/LoginCard";
+import LoginCard from "@/views/discover/c-views/recommend/components/login-card/login-card";
 
 interface IModuleAsideProps {
   children?: ReactNode;
