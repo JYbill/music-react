@@ -140,3 +140,25 @@
   display: inline-block;
   background-image: url("~@/assets/img/spirit-opera3.png");
 }
+
+// 播放icon hover
+.spirit-play-hover:hover {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  background-image: url("~@/assets/img/spirit-opera3.png");
+  background-position-y: 110px;
+}
+
+// 新碟上架唱片封面精灵图
+.sprite-cover-v1::after {
+  content: "";
+  width: 120px;
+  height: 100px;
+  z-index: -1;
+  position: absolute;
+  background-image: url("~@/assets/img/spirit-coverall.png");
+  background-position-y: -570px;
+}
+
+
