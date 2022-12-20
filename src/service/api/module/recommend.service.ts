@@ -42,3 +42,24 @@ export async function getSongList(limit = 8) {
     },
   });
 }
+
+/**
+ * 推荐页面 - 新碟上架板块
+ */
+interface INewDiscRes extends IResponse {
+  albums: INewDisc[];
+}
+export interface INewDisc {
+  id: number;
+  name: string;
+  picUrl: string;
+  artists: { name: string }[];
+}
+export async function getNewDiscList() {
+  const res = await Request.get<INewDiscRes>("/album/newest");
+  // 只需要10条
+  if (res.albums.length > 10) {
+    res.albums.length = 10;
+  }
+  return res;
+}

@@ -93,7 +93,7 @@ const Swiper: FC<ISwiperProps> = (props) => {
   }
 
   function changeSwiperBefore(before: number, nextSlide: number) {
-    const bgUrl = recommendReducer.banners[nextSlide].imageUrl + "?imageView&blur=40x20";
+    const bgUrl = recommendReducer.banners[nextSlide]?.imageUrl + "?imageView&blur=40x20";
     setBg(bgUrl);
   }
 

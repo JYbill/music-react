@@ -19,7 +19,7 @@ const Rank = lazy(() => import("@/views/discover/c-views/rank/rank"));
 const My = lazy(() => import("@/views/my/my"));
 const Download = lazy(() => import("@/views/download/download"));
 const Focus = lazy(() => import("@/views/focus/focus"));
-const Demo = lazy(() => import("@/views/Demo/demo"));
+const Demo = lazy(() => import("@/views/demo/demo"));
 
 const routers: NonIndexRouteObject[] = [
   {

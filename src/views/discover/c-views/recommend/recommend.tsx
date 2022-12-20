@@ -11,7 +11,7 @@ import type { FC, ReactNode } from "react";
 
 import Swiper from "@/components/swiper/swiper";
 import { useAppDispatch } from "@/store/index.store";
-import { getBannerReq, getSongListReq } from "@/store/recommend.store";
+import { getBannerReq, getNewDiscListReq, getSongListReq } from "@/store/recommend.store";
 import ModuleAside from "@/views/discover/c-views/recommend/components/m-aside/module-aside";
 
 interface IRecommendProps {
@@ -25,6 +25,7 @@ const Recommend: FC<IRecommendProps> = (props) => {
     // 轮播图网络请求
     dispatch(getBannerReq());
     dispatch(getSongListReq());
+    dispatch(getNewDiscListReq());
   }, []);
 
   // render

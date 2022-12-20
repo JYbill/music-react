@@ -6,17 +6,24 @@
  */
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { getBanner, getSongList } from "@/service/api/module/recommend.service";
+import {
+  INewDisc,
+  getBanner,
+  getNewDiscList,
+  getSongList,
+} from "@/service/api/module/recommend.service";
 import type { IBanner, IRecommendSong } from "@/service/api/module/recommend.service";
 
 interface IRecommendState {
   banners: IBanner[];
   songList: IRecommendSong[];
+  newDiscList: INewDisc[];
 }
 
 const initialState: IRecommendState = {
   banners: [],
   songList: [],
+  newDiscList: [],
 };
 const recommendReducer = createSlice({
   initialState,
@@ -27,6 +34,9 @@ const recommendReducer = createSlice({
     },
     setSongListAction(state, { payload }) {
       state.songList = payload;
+    },
+    setNewDiscListAction(state, { payload }) {
+      state.newDiscList = payload;
     },
   },
 
@@ -46,7 +56,8 @@ const recommendReducer = createSlice({
 });
 
 export default recommendReducer.reducer;
-export const { setBannerAction, setSongListAction } = recommendReducer.actions;
+export const { setBannerAction, setSongListAction, setNewDiscListAction } =
+  recommendReducer.actions;
 
 /**
  * 获取banner请求
@@ -66,4 +77,9 @@ export const getBannerReq = createAsyncThunk("banner", async (arg, { dispatch })
 export const getSongListReq = createAsyncThunk("songList", async (arg, { dispatch }) => {
   const res = await getSongList();
   dispatch(setSongListAction(res.result));
+});
+
+export const getNewDiscListReq = createAsyncThunk("newDiscList", async (arg, { dispatch }) => {
+  const res = await getNewDiscList();
+  dispatch(setNewDiscListAction(res.albums));
 });
