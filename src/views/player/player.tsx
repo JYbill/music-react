@@ -6,10 +6,11 @@
 import OperationLeft from "./operation-left/operation-left";
 import Progress from "./progress/progress";
 
-import React, { memo, useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
 import { shallowEqual } from "react-redux";
 
+import { IMusic } from "@/service/api/module/player.service";
 import { useAppDispatch, useAppSelector } from "@/store/index.store";
 import { getSongReq } from "@/store/player.store";
 import OperationRight from "@/views/player/operation-right/operation-right";
@@ -28,8 +29,11 @@ const player: FC<IPlayerProps> = (props) => {
   }, []);
 
   // init
+  const [isPlaying, setIsPlaying] = useState(false);
   const { currSong, musicInfo } = useAppSelector((state) => state.playerReducer, shallowEqual);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  // 监听切歌
   useEffect(() => {
     if (!audioRef?.current || !currSong || !musicInfo) {
       return;
@@ -45,10 +49,20 @@ const player: FC<IPlayerProps> = (props) => {
       });
   }, [audioRef, currSong, musicInfo]);
 
+  // 监听播放与暂停
+  useEffect(() => {
+    const audio = audioRef.current as HTMLAudioElement;
+    if (!isPlaying) {
+      audio.pause();
+      return;
+    }
+    audio.play();
+  }, [isPlaying]);
+
   console.log();
   return (
     <Wrapper>
-      <OperationLeft></OperationLeft>
+      <OperationLeft isPlaying={isPlaying} setIsPlaying={setIsPlaying}></OperationLeft>
       <Progress></Progress>
       <OperationRight></OperationRight>
       <audio ref={audioRef} />
