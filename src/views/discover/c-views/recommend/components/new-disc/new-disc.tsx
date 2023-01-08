@@ -6,7 +6,7 @@
 import { Carousel } from "antd";
 import { ThemeProvider } from "styled-components";
 
-import React, { memo } from "react";
+import React, { ElementRef, memo, useRef } from "react";
 import type { FC, ReactNode } from "react";
 import { shallowEqual } from "react-redux";
 
@@ -21,16 +21,35 @@ interface INewDiscProps {
 const NewDisc: FC<INewDiscProps> = (props) => {
   const newDiscList = useAppSelector((state) => state.recommendReducer.newDiscList, shallowEqual);
 
+  // ref
+  const swiperRef = useRef<ElementRef<typeof Carousel>>(null);
+
   return (
     <ThemeProvider theme={Theme}>
       <Wrapper>
-        <Carousel dots={false}>
-          <div>{renderSwiperPer5()}</div>
+        <Carousel dots={false} ref={swiperRef} speed={3000}>
           <div>{renderSwiperPer5(5, 9)}</div>
+          <div>{renderSwiperPer5()}</div>
         </Carousel>
+        <div
+          onClick={clickNewDiscSwiperLeft}
+          className="swiper left sprite-swiper-arrow-left"
+        ></div>
+        <div
+          onClick={clickNewDiscSwiperRight}
+          className="swiper right sprite-swiper-arrow-right"
+        ></div>
       </Wrapper>
     </ThemeProvider>
   );
+
+  function clickNewDiscSwiperLeft() {
+    swiperRef.current?.prev();
+  }
+
+  function clickNewDiscSwiperRight() {
+    swiperRef.current?.next();
+  }
 
   /**
    * 新碟上架板块 - 轮播图每五个进行渲染
@@ -51,12 +70,14 @@ const NewDisc: FC<INewDiscProps> = (props) => {
       const artists: string = newDiscList[index].artists.reduce((curr, next) => {
         return curr + " " + next.name;
       }, "");
-      console.log(url);
+      // console.log(url);
       resArr.push(
-        <div className="new-disc-item" key={id || index}>
-          <div className="bg sprite-cover-v1" style={{ backgroundImage: `url(${url})` }}></div>
+        <div className="new-disc-item sprite-cover-shadow spirit-play-after" key={id || index}>
+          <div className="bg" style={{ backgroundImage: `url(${url + "?param=100y100"})` }}>
+            <div className="sprite-cover-v1"></div>
+          </div>
           <p>{name}</p>
-          <p className="artists">{artists}</p>
+          <p className="artists txt-over">{artists}</p>
         </div>,
       );
     }

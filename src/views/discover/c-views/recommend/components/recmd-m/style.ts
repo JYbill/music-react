@@ -14,4 +14,8 @@ export const ModuleWrapper = styled.div`
       margin-left: -40px;
     }
   }
+
+  .new-disc {
+    margin-bottom: 37px;
+  }
 `;

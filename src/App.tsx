@@ -4,6 +4,7 @@ import { useRoutes } from "react-router-dom";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import routers from "@/router/index.router";
+import Player from "@/views/player/player";
 
 function App() {
   // 获取store且进行浅比较优化
@@ -27,6 +28,7 @@ function App() {
         <div className="main">{useRoutes(routers)}</div>
       </Suspense>
 
+      <Player />
       <Footer />
     </div>
   );

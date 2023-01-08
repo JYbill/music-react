@@ -11,7 +11,12 @@ import type { FC, ReactNode } from "react";
 
 import Swiper from "@/components/swiper/swiper";
 import { useAppDispatch } from "@/store/index.store";
-import { getBannerReq, getNewDiscListReq, getSongListReq } from "@/store/recommend.store";
+import {
+  getBannerReq,
+  getNewDiscListReq,
+  getSongListReq,
+  getTopListReq,
+} from "@/store/recommend.store";
 import ModuleAside from "@/views/discover/c-views/recommend/components/m-aside/module-aside";
 
 interface IRecommendProps {
@@ -26,6 +31,7 @@ const Recommend: FC<IRecommendProps> = (props) => {
     dispatch(getBannerReq());
     dispatch(getSongListReq());
     dispatch(getNewDiscListReq());
+    dispatch(getTopListReq());
   }, []);
 
   // render
@@ -34,6 +40,7 @@ const Recommend: FC<IRecommendProps> = (props) => {
       <Swiper />
       <ContentWrapper className="wrap-v2">
         <RecommendModule />
+        {/* 右侧侧边栏 */}
         <ModuleAside />
       </ContentWrapper>
     </div>

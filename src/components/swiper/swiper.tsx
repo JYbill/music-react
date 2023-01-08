@@ -53,6 +53,7 @@ const Swiper: FC<ISwiperProps> = (props) => {
             afterChange={changeSwiperAfter}
             easing="ease-in"
             speed={speed}
+            autoplaySpeed={5000}
           >
             {renderBanner()}
           </Carousel>
@@ -100,7 +101,7 @@ const Swiper: FC<ISwiperProps> = (props) => {
   function changeSwiperAfter(current: number) {
     setTimeout(() => {
       setSpeed(DEFAULT_SPEED);
-    }, 400);
+    }, 300);
   }
 
   /**

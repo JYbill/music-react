@@ -11,5 +11,5 @@ declare namespace NodeJS {
  */
 interface IResponse<T = any> {
   code: number;
-  [key: string]: T;
+  [key: string]: T | T[];
 }

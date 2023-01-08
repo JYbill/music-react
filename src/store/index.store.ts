@@ -4,6 +4,7 @@
  * @desc redux入口文件
  * @dependence
  */
+import playerReducer from "./player.store";
 import recommendReducer from "./recommend.store";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -14,6 +15,7 @@ import type { TypedUseSelectorHook } from "react-redux";
 const store = configureStore({
   reducer: {
     recommendReducer: recommendReducer,
+    playerReducer: playerReducer,
   },
 });
 

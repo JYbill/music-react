@@ -2,6 +2,7 @@
 .wrap-v1 {
   width: 100%;
 }
+
 .wrap-v2 {
   width: 982px;
 }
@@ -9,6 +10,7 @@
 // hot精灵图
 .spirit-hot {
   position: relative;
+
   &::after {
     content: "";
     width: 30px;
@@ -40,9 +42,11 @@
 @mixin spirit-shadow-bg {
   background-image: url("~@/assets/img/swper-operation.png");
 }
+
 .spirit-shadow-bg-left {
   @include spirit-shadow-bg;
 }
+
 .spirit-shadow-bg-right {
   @include spirit-shadow-bg;
   background-position-x: -17px;
@@ -53,18 +57,22 @@
   background-image: url("~@/assets/img/swper-operation.png");
   cursor: pointer;
 }
+
 .spirit-swiper-left {
   @include spirit-swiper;
   background-position-y: -360px;
 }
+
 .spirit-swiper-left-dark:hover {
   @include spirit-swiper;
   background-position-y: 228px;
 }
+
 .spirit-swiper-right {
   @include spirit-swiper;
   background-position-y: -508px;
 }
+
 .spirit-swiper-right-dark:hover {
   @include spirit-swiper;
   background-position-y: 80px;
@@ -101,6 +109,7 @@
   background-image: url("~@/assets/img/sprit-opera2.png");
   background-position-y: -194px;
   transition: none;
+
   &:hover {
     background-position-x: -110px;
   }
@@ -110,11 +119,13 @@
 @mixin bg-song {
   background-image: url("~@/assets/img/song-bg.png");
 }
+
 .bg-song-item {
   @include bg-song;
   width: 140px;
   height: 140px;
 }
+
 .bg-song-bottom {
   @include bg-song;
   background-position-y: -536px;
@@ -135,30 +146,233 @@
 
 // 播放icon
 .spirit-play {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   display: inline-block;
   background-image: url("~@/assets/img/spirit-opera3.png");
 }
 
 // 播放icon hover
-.spirit-play-hover:hover {
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  background-image: url("~@/assets/img/spirit-opera3.png");
-  background-position-y: 110px;
+.spirit-play-after {
+  :hover:after {
+    content: "";
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    background-image: url("~@/assets/img/spirit-opera3.png");
+    background-position-y: -111px;
+    right: 18%;
+    bottom: 30%;
+  }
 }
 
+// 播放icon v2
+.spirit-play-v2 {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  background-image: url("~@/assets/img/sprit-opera2.png");
+  background-position: -267px -205px;
+
+  &:hover {
+    background-position-y: -235px;
+  }
+}
+
+// 收藏icon
+.spirit-collect {
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+  background-image: url("~@/assets/img/sprit-opera2.png");
+  background-position: -299px -205px;
+
+  &:hover {
+    background-position-y: -235px;
+  }
+}
+
+
 // 新碟上架唱片封面精灵图
-.sprite-cover-v1::after {
-  content: "";
+.sprite-cover-v1 {
   width: 120px;
   height: 100px;
-  z-index: -1;
-  position: absolute;
   background-image: url("~@/assets/img/spirit-coverall.png");
   background-position-y: -570px;
 }
 
+// 新碟上架唱片封面阴影精灵图
+.sprite-cover-shadow {
+  background-image: url("~@/assets/img/sprit-opera2.png");
+  background-position: -260px 100px;
+  background-repeat: no-repeat;
+}
 
+// 文本限制1行，溢出显示...
+.txt-over {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+// 轮播图左右箭头
+@mixin spriteSwiperArrow {
+  background-image: url("~@/assets/img/sprit-opera2.png");
+  background-position-y: -75px;
+}
+.sprite-swiper-arrow-right {
+  @include spriteSwiperArrow;
+  background-position-x: -717px;
+  &:hover {
+    background-position-x: -737px;
+  }
+}
+.sprite-swiper-arrow-left {
+  @include spriteSwiperArrow;
+  background-position-x: -677px;
+  &:hover {
+    background-position-x: -697px;
+  }
+}
+
+// 上一曲icon
+.sprite-pre {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  background: url("~@/assets/img/playbar.png") no-repeat 0 -128px;
+  &:hover {
+    background-position-x: -30px;
+  }
+}
+
+// 下一曲icon
+.sprite-next {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  background: url("~@/assets/img/playbar.png") no-repeat -80px -128px;
+  &:hover {
+    background-position-x: -110px;
+  }
+}
+
+// 播放icon
+.sprite-play {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background: url("~@/assets/img/playbar.png") no-repeat -2px -167px;
+  &:hover {
+    background-position-x: -42px;
+  }
+}
+
+// 暂停icon
+.sprite-pause {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background: url("~@/assets/img/playbar.png") no-repeat -2px -206px;
+  &:hover {
+    background-position-x: -42px;
+  }
+}
+
+// 播放mv icon
+.sprite-mv {
+  cursor: pointer;
+  width: 19px;
+  height: 19px;
+  background: url("~@/assets/img/playbar.png") no-repeat 0 -58px;
+  &:hover {
+    background-position-x: -20px;
+  }
+}
+
+// 歌曲链接🔗 icon
+.sprite-link {
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  background: url("~@/assets/img/playbar.png") no-repeat -110px -104px;
+  &:hover {
+    background-position-x: -130px;
+  }
+}
+
+// 画中画icon
+.sprite-lyric {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background: url("~@/assets/img/statebar-lyric.png") no-repeat 0 0;
+  &:hover {
+    background-position-y: -25px;
+  }
+}
+
+// 收藏v2 icon
+.sprite-collect-v2 {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background: url("~@/assets/img/playbar.png") no-repeat -90px -163px;
+  &:hover {
+    background-position-y: -189px;
+  }
+}
+
+// 分享
+.sprite-share {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background: url("~@/assets/img/playbar.png") no-repeat -115px -163px;
+  &:hover {
+    background-position-y: -189px;
+  }
+}
+
+// 分割线
+.sprite-division {
+  width: 1px;
+  height: 25px;
+  background: url("~@/assets/img/playbar.png") no-repeat -150px -249px;
+}
+
+// 声音
+.sprite-voice {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background: url("~@/assets/img/playbar.png") no-repeat 0 -248px;
+  &:hover {
+    background-position-x: -29px;
+  }
+}
+
+// 循环模式icon
+.sprite-cyclic {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  background: url("~@/assets/img/playbar.png") no-repeat 0 -345px;
+  &:hover {
+    background-position-x: -30px;
+  }
+}
+
+// 歌单列表icon
+.sprite-song-ls {
+  cursor: pointer;
+  width: 59px;
+  height: 25px;
+  background: url("~@/assets/img/playbar.png") no-repeat -42px -70px;
+  &:hover {
+    background-position-y: -100px;
+  }
+}

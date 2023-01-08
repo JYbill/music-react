@@ -5,6 +5,7 @@ export default {
     gary6: "#666",
     gary3: "#333",
     themeRed: "#C20C0C", // 主题红
+    txtRed: "#c10d0c", // 字体红
     darkRed: "#9B0909",
   },
 };

@@ -15,6 +15,7 @@ import ContentHeaderV1 from "@/components/content-header-v1/content-header-v1";
 import SongMenuItem from "@/components/song-menu-item/song-menu-item";
 import { useAppSelector } from "@/store/index.store";
 import NewDisc from "@/views/discover/c-views/recommend/components/new-disc/new-disc";
+import TopList from "@/views/discover/c-views/recommend/components/top-list/top-list";
 
 interface IRecommendModuleProps {
   children?: ReactNode;
@@ -35,6 +36,12 @@ const RecommendModule: FC<IRecommendModuleProps> = (props) => {
       <div className="new-disc">
         <ContentHeaderV1 title="新碟上架" />
         <NewDisc />
+      </div>
+
+      {/* 榜单 */}
+      <div className="rank">
+        <ContentHeaderV1 title="榜单" />
+        <TopList />
       </div>
     </ModuleWrapper>
   );
