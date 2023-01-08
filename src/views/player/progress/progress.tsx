@@ -21,7 +21,7 @@ interface IProgressProps {
 const progress: FC<IProgressProps> = (props) => {
   // store
   const { currSong } = useAppSelector((state) => state.playerReducer, shallowEqual);
-  console.log("currSong", currSong);
+  // console.log("currSong", currSong);
 
   return (
     <Wrapper theme={Theme}>

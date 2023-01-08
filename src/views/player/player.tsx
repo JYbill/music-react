@@ -6,10 +6,11 @@
 import OperationLeft from "./operation-left/operation-left";
 import Progress from "./progress/progress";
 
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import type { FC, ReactNode } from "react";
+import { shallowEqual } from "react-redux";
 
-import { useAppDispatch } from "@/store/index.store";
+import { useAppDispatch, useAppSelector } from "@/store/index.store";
 import { getSongReq } from "@/store/player.store";
 import OperationRight from "@/views/player/operation-right/operation-right";
 import { Wrapper } from "@/views/player/style";
@@ -26,12 +27,31 @@ const player: FC<IPlayerProps> = (props) => {
     dispatch(getSongReq(347230));
   }, []);
 
+  // init
+  const { currSong, musicInfo } = useAppSelector((state) => state.playerReducer, shallowEqual);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  useEffect(() => {
+    if (!audioRef?.current || !currSong || !musicInfo) {
+      return;
+    }
+    audioRef.current.src = musicInfo.url;
+    audioRef.current
+      .play()
+      .then(() => {
+        console.log("播放音乐成功");
+      })
+      .catch((err) => {
+        console.log("播放音乐错误", err);
+      });
+  }, [audioRef, currSong, musicInfo]);
+
   console.log();
   return (
     <Wrapper>
       <OperationLeft></OperationLeft>
       <Progress></Progress>
       <OperationRight></OperationRight>
+      <audio ref={audioRef} />
     </Wrapper>
   );
 };

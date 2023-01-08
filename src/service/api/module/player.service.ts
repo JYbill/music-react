@@ -9,7 +9,7 @@ interface ISongResp extends IResponse {
   songs: ISong[];
 }
 export interface ISong {
-  id: string;
+  id: number;
   name: string;
   al: ISongInfo;
 }
@@ -17,6 +17,18 @@ interface ISongInfo {
   id: number;
   name: string;
   picUrl: string;
+}
+
+interface IMusicRes extends IResponse {
+  data: IMusic[];
+}
+export interface IMusic {
+  id: number;
+  url: string;
+  size: number;
+  type: string;
+  level: string;
+  time: number;
 }
 
 /**
@@ -27,6 +39,14 @@ export async function getSong(id: number) {
   return Request.get<ISongResp>("/song/detail", {
     params: {
       ids: id,
+    },
+  });
+}
+
+export async function getMusicUrl(id: number) {
+  return Request.get<IMusicRes>("song/url/v1", {
+    params: {
+      id,
     },
   });
 }
