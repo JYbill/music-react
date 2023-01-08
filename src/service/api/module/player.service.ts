@@ -12,11 +12,16 @@ export interface ISong {
   id: number;
   name: string;
   al: ISongInfo;
+  ar: IArtist[];
 }
 interface ISongInfo {
   id: number;
   name: string;
   picUrl: string;
+}
+export interface IArtist {
+  id: number;
+  name: string;
 }
 
 interface IMusicRes extends IResponse {

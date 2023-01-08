@@ -38,6 +38,8 @@ export const getSongReq = createAsyncThunk("song", async (id: number, { dispatch
     dispatch(setCurrSongAction(res.songs[0]));
   });
   getMusicUrl(id).then((res) => {
-    dispatch(setMusicInfoAction(res.data[0]));
+    const data = res.data[0];
+    console.log("music", data);
+    dispatch(setMusicInfoAction(data));
   });
 });

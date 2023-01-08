@@ -15,4 +15,16 @@ export default class NormalUtil {
     }
     return count.toString();
   }
+
+  /**
+   * 总时常格式化为：分钟：秒
+   * @param timeTotal
+   */
+  static formatMusicTime(timeTotal: number) {
+    const timeSecondTotal = timeTotal / 1000;
+    const perMinute = 60;
+    const minute = Math.floor(timeSecondTotal / perMinute);
+    const second = Math.floor(timeSecondTotal % perMinute);
+    return minute + ":" + second;
+  }
 }

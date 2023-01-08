@@ -13,6 +13,8 @@ import { shallowEqual } from "react-redux";
 import Theme from "@/assets/mixin/theme";
 import { useAppSelector } from "@/store/index.store";
 import ImgUtil from "@/utils/img.util";
+import NormalUtil from "@/utils/normal.util";
+import PlayerUtil from "@/utils/player.util";
 
 interface IProgressProps {
   children?: ReactNode;
@@ -20,7 +22,7 @@ interface IProgressProps {
 
 const progress: FC<IProgressProps> = (props) => {
   // store
-  const { currSong } = useAppSelector((state) => state.playerReducer, shallowEqual);
+  const { currSong, musicInfo } = useAppSelector((state) => state.playerReducer, shallowEqual);
   // console.log("currSong", currSong);
 
   return (
@@ -35,7 +37,7 @@ const progress: FC<IProgressProps> = (props) => {
         <div className="top">
           <span className="title">{currSong?.name}</span>
           <div className="sprite-mv mv"></div>
-          <span className="singer">Alec Benjamin</span>
+          <span className="singer">{currSong && PlayerUtil.formatArtist(currSong.ar)}</span>
           <div className="sprite-link"></div>
         </div>
         <div className="bottom">
@@ -43,7 +45,7 @@ const progress: FC<IProgressProps> = (props) => {
           <div className="time">
             <span>00:00</span>
             <span>/</span>
-            <span>00:00</span>
+            <span>{musicInfo && NormalUtil.formatMusicTime(musicInfo.time)}</span>
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ const player: FC<IPlayerProps> = (props) => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     // 轮播图网络请求
-    dispatch(getSongReq(347230));
+    dispatch(getSongReq(22821100));
   }, []);
 
   // init
