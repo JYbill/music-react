@@ -10,8 +10,7 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
 import { shallowEqual } from "react-redux";
 
-import { useAppDispatch, useAppSelector } from "@/store/index.store";
-import { getSongReq } from "@/store/player.store";
+import { useAppSelector } from "@/store/index.store";
 import OperationRight from "@/views/player/operation-right/operation-right";
 import { Wrapper } from "@/views/player/style";
 
@@ -20,21 +19,17 @@ interface IPlayerProps {
 }
 
 const player: FC<IPlayerProps> = (props) => {
-  // hooks
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    // 轮播图网络请求
-    dispatch(getSongReq(22821100));
-  }, []);
-
   // init
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [currTime, setCurrTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false); // 播放状态
+  // TODO: 滑动状态时audio播放进度回调不会影响Slider的进度
+  const [isSliding, setIsSliding] = useState(false); // 是否处于slider滑动状态
+  const [progress, setProgress] = useState(0); // 进度百分比
+  const [currTime, setCurrTime] = useState(0); // 当前播放时间ms
   const { currSong, musicInfo } = useAppSelector((state) => state.playerReducer, shallowEqual);
   const musicTimeTotal = musicInfo?.time; // 歌曲总长度(ms)
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // mounted
   // 监听切歌
   useEffect(() => {
     if (!audioRef?.current || !currSong || !musicInfo) {
@@ -78,13 +73,32 @@ const player: FC<IPlayerProps> = (props) => {
     setProgress(progress);
   };
 
-  console.log();
+  const endAudio = (e: React.SyntheticEvent<HTMLAudioElement, Event>) => {
+    setIsPlaying(false);
+  };
+
+  /**
+   * 音乐播放进度跳转
+   * 注意：设置时间单位为s
+   * @param time
+   */
+  const updAudioProgress = (time: number) => {
+    if (!audioRef.current) return;
+    audioRef.current.currentTime = time / 1000;
+  };
+
   return (
     <Wrapper>
       <OperationLeft isPlaying={isPlaying} setIsPlaying={setIsPlaying}></OperationLeft>
-      <Progress progressVal={progress} currTime={currTime}></Progress>
+      <Progress
+        progressVal={progress}
+        setProgressVal={setProgress}
+        currTime={currTime}
+        setCurrTime={setCurrTime}
+        setMusicTime={updAudioProgress}
+      />
       <OperationRight></OperationRight>
-      <audio ref={audioRef} onTimeUpdate={updTimeAudio} />
+      <audio ref={audioRef} onTimeUpdate={updTimeAudio} onEnded={endAudio} />
     </Wrapper>
   );
 };

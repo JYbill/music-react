@@ -19,13 +19,41 @@ import PlayerUtil from "@/utils/player.util";
 interface IProgressProps {
   children?: ReactNode;
   progressVal: number;
+  setProgressVal: React.Dispatch<React.SetStateAction<number>>;
   currTime: number;
+  setCurrTime: React.Dispatch<React.SetStateAction<number>>;
+  setMusicTime: AnyFunction;
 }
 
 const progress: FC<IProgressProps> = (props) => {
-  // store
+  // init
   const { currSong, musicInfo } = useAppSelector((state) => state.playerReducer, shallowEqual);
-  // console.log("currSong", currSong);
+  const { setProgressVal, setCurrTime, setMusicTime } = props;
+
+  // common 公共方法
+  /**
+   * 根据当前Slider发生变化的值，设置进度和当前事件
+   * @param val
+   * @return timeStamp 滑动后，歌曲跳转的时间戳
+   */
+  const handleTimeAndProgress = (val: number) => {
+    if (!musicInfo) return;
+    const time = musicInfo.time;
+    val = val > time ? time : val;
+    const timeStamp = (val / 100) * time;
+    setCurrTime(timeStamp);
+    setProgressVal(val);
+    return timeStamp;
+  };
+  // events
+  // 进度条改变事件
+  const changeSlider = (val: number) => handleTimeAndProgress(val);
+  // 鼠标抬起事件
+  const afterChangeSlider = (val: number) => {
+    const time = handleTimeAndProgress(val);
+    setMusicTime(time);
+    // console.log(time);
+  };
 
   return (
     <Wrapper theme={Theme}>
@@ -48,6 +76,8 @@ const progress: FC<IProgressProps> = (props) => {
             value={props.progressVal}
             tooltip={{ formatter: null }}
             step={0.5}
+            onChange={changeSlider}
+            onAfterChange={afterChangeSlider}
           />
           <div className="time">
             <span>{NormalUtil.formatMusicTime(props.currTime)}</span>

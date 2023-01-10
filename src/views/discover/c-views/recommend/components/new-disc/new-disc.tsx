@@ -76,7 +76,7 @@ const NewDisc: FC<INewDiscProps> = (props) => {
           <div className="bg" style={{ backgroundImage: `url(${url + "?param=100y100"})` }}>
             <div className="sprite-cover-v1"></div>
           </div>
-          <p>{name}</p>
+          <p className="txt-over over2">{name}</p>
           <p className="artists txt-over">{artists}</p>
         </div>,
       );

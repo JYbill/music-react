@@ -1,24 +1,18 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useRoutes } from "react-router-dom";
 
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header";
 import routers from "@/router/index.router";
+import { useAppDispatch } from "@/store/index.store";
+import { getSongReq } from "@/store/player.store";
 import Player from "@/views/player/player";
 
 function App() {
-  // 获取store且进行浅比较优化
-  // const { counter } = useAppSelector((state) => state, shallowEqual);
-  // const dispatch = useAppDispatch();
-
-  // demo例子🌰
-  // useEffect(() => {
-  //   async function getBannerHTTP() {
-  //     const res = await request.get("/banner/");
-  //     console.log(res);
-  //   }
-  //   getBannerHTTP();
-  // }, []);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(getSongReq(22821100));
+  }, []);
 
   return (
     <div className="App">

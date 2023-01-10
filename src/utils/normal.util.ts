@@ -25,6 +25,6 @@ export default class NormalUtil {
     const perMinute = 60;
     const minute = Math.floor(timeSecondTotal / perMinute);
     const second = Math.floor(timeSecondTotal % perMinute);
-    return minute + ":" + second;
+    return minute.toString().padStart(2, "0") + ":" + second.toString().padStart(2, "0");
   }
 }
