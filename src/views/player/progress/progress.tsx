@@ -18,6 +18,8 @@ import PlayerUtil from "@/utils/player.util";
 
 interface IProgressProps {
   children?: ReactNode;
+  progressVal: number;
+  currTime: number;
 }
 
 const progress: FC<IProgressProps> = (props) => {
@@ -41,9 +43,14 @@ const progress: FC<IProgressProps> = (props) => {
           <div className="sprite-link"></div>
         </div>
         <div className="bottom">
-          <Slider defaultValue={0} tooltip={{ formatter: null }} />
+          <Slider
+            defaultValue={0}
+            value={props.progressVal}
+            tooltip={{ formatter: null }}
+            step={0.5}
+          />
           <div className="time">
-            <span>00:00</span>
+            <span>{NormalUtil.formatMusicTime(props.currTime)}</span>
             <span>/</span>
             <span>{musicInfo && NormalUtil.formatMusicTime(musicInfo.time)}</span>
           </div>
