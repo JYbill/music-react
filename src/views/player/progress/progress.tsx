@@ -23,12 +23,13 @@ interface IProgressProps {
   currTime: number;
   setCurrTime: React.Dispatch<React.SetStateAction<number>>;
   setMusicTime: AnyFunction;
+  setIsSliding: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const progress: FC<IProgressProps> = (props) => {
   // init
   const { currSong, musicInfo } = useAppSelector((state) => state.playerReducer, shallowEqual);
-  const { setProgressVal, setCurrTime, setMusicTime } = props;
+  const { setProgressVal, setCurrTime, setMusicTime, setIsSliding } = props;
 
   // common 公共方法
   /**
@@ -47,11 +48,15 @@ const progress: FC<IProgressProps> = (props) => {
   };
   // events
   // 进度条改变事件
-  const changeSlider = (val: number) => handleTimeAndProgress(val);
+  const changeSlider = (val: number) => {
+    setIsSliding(true);
+    handleTimeAndProgress(val);
+  };
   // 鼠标抬起事件
   const afterChangeSlider = (val: number) => {
     const time = handleTimeAndProgress(val);
     setMusicTime(time);
+    setIsSliding(false);
     // console.log(time);
   };
 

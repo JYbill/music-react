@@ -21,7 +21,6 @@ interface IPlayerProps {
 const player: FC<IPlayerProps> = (props) => {
   // init
   const [isPlaying, setIsPlaying] = useState(false); // 播放状态
-  // TODO: 滑动状态时audio播放进度回调不会影响Slider的进度
   const [isSliding, setIsSliding] = useState(false); // 是否处于slider滑动状态
   const [progress, setProgress] = useState(0); // 进度百分比
   const [currTime, setCurrTime] = useState(0); // 当前播放时间ms
@@ -63,9 +62,9 @@ const player: FC<IPlayerProps> = (props) => {
   // event
   // 音乐进度条移动触发
   const updTimeAudio = (event: React.SyntheticEvent<HTMLAudioElement, Event>) => {
-    if (!audioRef.current || !musicTimeTotal) {
-      return;
-    }
+    if (!audioRef.current || !musicTimeTotal) return;
+    // 如果没有滑动才让Progress移动，让Progress的时间增加
+    if (isSliding) return;
     const currTime = audioRef.current.currentTime * 1000;
     setCurrTime(currTime);
     let progress = (currTime / musicTimeTotal) * 100; // 百分比
@@ -73,6 +72,7 @@ const player: FC<IPlayerProps> = (props) => {
     setProgress(progress);
   };
 
+  // 音乐结束事件
   const endAudio = (e: React.SyntheticEvent<HTMLAudioElement, Event>) => {
     setIsPlaying(false);
   };
@@ -96,6 +96,7 @@ const player: FC<IPlayerProps> = (props) => {
         currTime={currTime}
         setCurrTime={setCurrTime}
         setMusicTime={updAudioProgress}
+        setIsSliding={setIsSliding}
       />
       <OperationRight></OperationRight>
       <audio ref={audioRef} onTimeUpdate={updTimeAudio} onEnded={endAudio} />
