@@ -36,6 +36,14 @@ export interface IMusic {
   time: number;
 }
 
+interface ILyricRes extends IMusicRes {
+  lrc: ILyric;
+}
+interface ILyric {
+  version: number;
+  lyric: string;
+}
+
 /**
  * 根据id获取歌曲详情
  * @param id
@@ -53,5 +61,15 @@ export async function getMusicUrl(id: number) {
     params: {
       id,
     },
+  });
+}
+
+/**
+ * 根据歌曲id获取对应的歌词
+ * @param sid 歌曲id
+ */
+export async function getLyric(sid: number) {
+  return Request.get<ILyricRes>("/lyric", {
+    params: { id: sid },
   });
 }
