@@ -12,6 +12,10 @@ import { RootState } from "@/store/index.store";
 import type { LyricType } from "@/utils/player.util";
 import PlayerUtil from "@/utils/player.util";
 
+interface IRootState {
+  state: RootState;
+}
+
 interface IPlayerState {
   currSong?: ISong; // 当前歌曲基本信息
   musicInfo?: IMusic; // 当前歌曲详情
@@ -79,7 +83,13 @@ const recommendReducer = createSlice({
     setPlayListAction(state, { payload }) {
       state.playerList = payload;
     },
-    setPlayIndexAction(state, { payload }) {
+    setPlayIndexAction(state, { payload }: { payload: number }) {
+      // 限定索引数值范围
+      if (payload > state.playerList.length - 1) {
+        payload = 0;
+      } else if (payload < 0) {
+        payload = state.playerList.length - 1;
+      }
       state.playIndex = payload;
     },
     setPlayModeAction(state, { payload }) {
@@ -98,7 +108,10 @@ export const {
 } = recommendReducer.actions;
 export default recommendReducer.reducer;
 
-export const getSongReq = createAsyncThunk<void, number, { state: RootState }>(
+/**
+ * 获取歌曲所有数据请求
+ */
+export const getSongReq = createAsyncThunk<void, number, IRootState>(
   "song",
   async (id: number, { dispatch, getState }) => {
     const { playerList } = getState().playerReducer;
@@ -133,5 +146,38 @@ export const getSongReq = createAsyncThunk<void, number, { state: RootState }>(
       // console.log("lyric", lyricStr);
       dispatch(setLyricAction(lyricStr));
     });
+  },
+);
+
+/**
+ * 下一首、上一首歌曲
+ */
+export const nextSong = createAsyncThunk<void, "pre" | "next", IRootState>(
+  "nextSong",
+  async (mode, { dispatch, getState }) => {
+    const playerReducer = getState().playerReducer;
+    const { playIndex, playerList, playMode } = playerReducer;
+
+    // 策略模式 - 播放歌曲的模式 => 设置索引
+    const playerModeStrategy = {
+      [PlayMode.CONTINUOUS]() {
+        mode === "next"
+          ? dispatch(setPlayIndexAction(playIndex + 1))
+          : dispatch(setPlayIndexAction(playIndex - 1));
+      },
+      [PlayMode.CYCLE]() {
+        playerModeStrategy[PlayMode.CONTINUOUS]();
+      },
+      [PlayMode.RANDOM]() {
+        const randomIndex = Math.floor(Math.random() * playerList.length - 1);
+        dispatch(setPlayIndexAction(randomIndex));
+      },
+    };
+    playerModeStrategy[playMode]();
+
+    // 最新歌曲的索引 => 获取歌曲最新数据（歌词、歌曲信息、歌曲url...）
+    const currIndex = getState().playerReducer.playIndex;
+    const { id: newSId } = playerList[currIndex];
+    dispatch(getSongReq(newSId));
   },
 );

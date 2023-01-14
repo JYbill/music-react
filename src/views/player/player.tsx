@@ -11,7 +11,9 @@ import React, { memo, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
 import { shallowEqual } from "react-redux";
 
-import { useAppSelector } from "@/store/index.store";
+import { PlayMode } from "@/enum/index.enum";
+import { useAppDispatch, useAppSelector } from "@/store/index.store";
+import { nextSong } from "@/store/player.store";
 import OperationRight from "@/views/player/operation-right/operation-right";
 import { Wrapper } from "@/views/player/style";
 
@@ -21,12 +23,13 @@ interface IPlayerProps {
 
 const player: FC<IPlayerProps> = (props) => {
   // init
+  const dispatch = useAppDispatch();
   const [isPlaying, setIsPlaying] = useState(false); // 播放状态
   const [isSliding, setIsSliding] = useState(false); // 是否处于slider滑动状态
   const [progress, setProgress] = useState(0); // 进度百分比
   const [currTime, setCurrTime] = useState(0); // 当前播放时间ms
   const [currLyric, setCurrLyric] = useState(""); // 当前歌词
-  const { currSong, musicInfo, lyricList } = useAppSelector(
+  const { currSong, musicInfo, lyricList, playMode } = useAppSelector(
     (state) => state.playerReducer,
     shallowEqual,
   );
@@ -46,9 +49,19 @@ const player: FC<IPlayerProps> = (props) => {
         console.log("播放音乐成功");
       })
       .catch((err) => {
-        console.log("受到浏览器自动播放策略阻碍", err);
+        const code = err.code;
+        switch (code) {
+          case 0:
+            console.log("受到浏览器自动播放策略阻碍", err);
+            break;
+          case 20:
+            console.log("同时触发多次播放", err);
+            break;
+          default:
+            console.log("其他错误", err);
+        }
       });
-  }, [audioRef, currSong, musicInfo]);
+  }, [currSong, musicInfo]);
 
   // 监听播放与暂停
   useEffect(() => {
@@ -60,7 +73,7 @@ const player: FC<IPlayerProps> = (props) => {
     audio.play().catch((err) => {
       setIsPlaying(false);
       // 存在版权原因无法导致播放失败
-      console.log("播放音乐失败，原因:", err);
+      console.log("音乐播放失败，原因:", err);
     });
   }, [isPlaying]);
 
@@ -95,7 +108,21 @@ const player: FC<IPlayerProps> = (props) => {
 
   // 音乐结束事件
   const endAudio = (e: React.SyntheticEvent<HTMLAudioElement, Event>) => {
-    setIsPlaying(false);
+    switch (playMode) {
+      case PlayMode.CONTINUOUS:
+      case PlayMode.RANDOM:
+        dispatch(nextSong("next"));
+        return;
+      case PlayMode.CYCLE:
+        audioRef.current!.currentTime = 0;
+        audioRef.current!.play();
+        return;
+    }
+
+    // 保持继续播放状态
+    if (!isPlaying) {
+      setIsPlaying(true);
+    }
   };
 
   /**
