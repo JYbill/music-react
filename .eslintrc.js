@@ -41,5 +41,6 @@ module.exports = {
     "node/no-unpublished-import": "off", // 未使用的import内容
     "@typescript-eslint/no-explicit-any": "off",
     "sonarjs/prefer-immediate-return": "off",
+    "sonarjs/no-duplicate-string": "off",
   },
 };

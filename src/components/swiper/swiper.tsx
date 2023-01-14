@@ -13,7 +13,7 @@ import { shallowEqual } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Theme from "@/assets/mixin/theme";
-import { DOWNLOAD_ROUTER } from "@/enum/inde.enum";
+import { DOWNLOAD_ROUTER } from "@/enum/index.enum";
 import { useAppSelector } from "@/store/index.store";
 
 interface ISwiperProps {

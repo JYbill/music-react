@@ -5,6 +5,7 @@
  */
 import OperationLeft from "./operation-left/operation-left";
 import Progress from "./progress/progress";
+import { message } from "antd";
 
 import React, { memo, useEffect, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
@@ -24,7 +25,11 @@ const player: FC<IPlayerProps> = (props) => {
   const [isSliding, setIsSliding] = useState(false); // 是否处于slider滑动状态
   const [progress, setProgress] = useState(0); // 进度百分比
   const [currTime, setCurrTime] = useState(0); // 当前播放时间ms
-  const { currSong, musicInfo } = useAppSelector((state) => state.playerReducer, shallowEqual);
+  const [currLyric, setCurrLyric] = useState(""); // 当前歌词
+  const { currSong, musicInfo, lyricList } = useAppSelector(
+    (state) => state.playerReducer,
+    shallowEqual,
+  );
   const musicTimeTotal = musicInfo?.time; // 歌曲总长度(ms)
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -65,11 +70,27 @@ const player: FC<IPlayerProps> = (props) => {
     if (!audioRef.current || !musicTimeTotal) return;
     // 如果没有滑动才让Progress移动，让Progress的时间增加
     if (isSliding) return;
-    const currTime = audioRef.current.currentTime * 1000;
+    const currTime = audioRef.current.currentTime * 1000; // 单位ms
     setCurrTime(currTime);
     let progress = (currTime / musicTimeTotal) * 100; // 百分比
     progress = parseFloat(progress.toFixed(2));
     setProgress(progress);
+
+    // 当前歌词算法，未匹配到按最后一句歌词处理(默认，开始就有歌词)
+    let currLyricInfo = lyricList.find((item) => item.time > currTime);
+    if (!currLyricInfo) {
+      currLyricInfo = lyricList[lyricList.length - 1];
+    }
+    // 重复的一句歌词不再渲染
+    if (currLyric === currLyricInfo.content) return;
+    const content = currLyricInfo.content;
+    setCurrLyric(content);
+    message.open({
+      key: "lyric",
+      content: content,
+      duration: 0,
+      className: "lyric-msg",
+    });
   };
 
   // 音乐结束事件
@@ -98,7 +119,7 @@ const player: FC<IPlayerProps> = (props) => {
         setMusicTime={updAudioProgress}
         setIsSliding={setIsSliding}
       />
-      <OperationRight></OperationRight>
+      <OperationRight />
       <audio ref={audioRef} onTimeUpdate={updTimeAudio} onEnded={endAudio} />
     </Wrapper>
   );

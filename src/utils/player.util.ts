@@ -5,6 +5,10 @@
  */
 import { IArtist } from "@/service/api/module/player.service";
 
+export type LyricType = {
+  time: number;
+  content: string;
+};
 export default class PlayerUtil {
   /**
    * 根据歌手列表获取歌手字符串
@@ -26,7 +30,7 @@ export default class PlayerUtil {
    * lyric字符串转lyric信息数组
    * @param lyricStr
    */
-  static lyric2Array(lyricStr: string) {
+  static lyric2Array(lyricStr: string): LyricType[] {
     const lyricInfoList = [];
     const lyricList = lyricStr.split("\n");
     for (const str of lyricList) {
